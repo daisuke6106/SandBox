@@ -16,15 +16,15 @@ public class Sample {
 		for (;n>=1; n--) result = result.multiply(new BigDecimal(n));
 		String resultStr = result.toString();
 		
-		Pattern com = Pattern.compile("^([0-9]+?)0*$");
+		Pattern com = Pattern.compile("^([0-9]+?)0+$");
 		Matcher matcher = com.matcher(resultStr);
 		if (matcher.find()) resultStr = matcher.group(1);
 		
-		com = Pattern.compile("^([0-9]+)([0-9]{9})$");
+		com = Pattern.compile("^[0-9]+([0-9]{9})$");
 		matcher = com.matcher(resultStr);
-		if (matcher.find()) resultStr = matcher.group(2);
+		if (matcher.find()) resultStr = matcher.group(1);
 		
-		com = Pattern.compile("^0*([0-9]+)$");
+		com = Pattern.compile("^0+([0-9]+)$");
 		matcher = com.matcher(resultStr);
 		if (matcher.find()) resultStr = matcher.group(1);
 		
